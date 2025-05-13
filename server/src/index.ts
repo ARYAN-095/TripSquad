@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import authRouter from "./routes/Auth";
 import { authGuard } from "./middleware/authGuard";
 import { IUser } from './models/User';
-
+import itinerariesRouter from "./routes/itineraries";
  
 declare global {
     namespace Express {
@@ -28,6 +28,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use("/api/auth", authRouter);
+app.use("/api/itineraries", itinerariesRouter);
 // After mounting authRouter
 
 // Protected route example

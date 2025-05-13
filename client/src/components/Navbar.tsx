@@ -1,4 +1,4 @@
-import React from "react";
+ 
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -40,9 +40,12 @@ const Navbar = () => {
               >
                 Register
               </Link>
+             
+
             </>
           )}
         </div>
+        <Link to="/itineraries" className="mr-4">My Trips</Link>
       </div>
     </nav>
   );

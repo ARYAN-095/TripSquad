@@ -5,6 +5,14 @@ import Register from "./pages/Register";
 import RequireAuth from "./components/RequireAuth";
 import Navbar from "./components/Navbar";
 
+
+import { Navigate } from "react-router-dom";
+
+
+import ItineraryList from "./pages/ItineraryList";
+import ItineraryDetail from "./pages/ItineraryDetail"; // we’ll build next
+ 
+
 export default function App() {
   return (
     <>
@@ -22,7 +30,24 @@ export default function App() {
         }
       />
 
-      {/* other protected routes */}
+<Route
+        path="/itineraries"
+        element={
+          <RequireAuth>
+            <ItineraryList />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/itineraries/:id"
+        element={
+          <RequireAuth>
+            <ItineraryDetail />
+          </RequireAuth>
+        }
+      />
+      {/* redirect “/” to list */}
+      <Route path="/" element={<Navigate to="/itineraries" replace />} />
     </Routes>
     </>
   );
