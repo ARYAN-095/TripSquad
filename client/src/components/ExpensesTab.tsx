@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { IExpense, ISplit, IItinerary, ICollaborator } from "../types";
+import type { IExpense, ISplit, IItinerary, ICollaborator } from "../types";
 import { addExpense, updateExpense, deleteExpense } from "../services/itineraries";
 import { useAuth } from "../context/AuthContext";
 
