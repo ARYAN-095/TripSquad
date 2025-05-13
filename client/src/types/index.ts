@@ -18,15 +18,18 @@ export interface ICollaborator {
   status: "accepted" | "pending";
 }
 
+export interface ISplit {
+    user: string;    // user ID
+    share: number;   // e.g. 25.50
+  }
+
+
 export interface IExpense {
   _id: string;
   description: string;
   amount: number;
   paidBy: { _id: string; name: string };
-  splits: {
-    user: { _id: string; name: string };
-    share: number;
-  }[];
+  splits: ISplit[];
   createdAt: string;
 }
 
@@ -48,3 +51,8 @@ export interface IItinerary {
   createdAt: string;
   updatedAt: string;
 }
+
+
+  
+ 
+  

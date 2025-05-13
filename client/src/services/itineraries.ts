@@ -34,3 +34,39 @@ export const voteItineraryItem = async (
   );
   return data;
 };
+
+export const addExpense = async (
+    itineraryId: string,
+    expense: {
+      description: string;
+      amount: number;
+      splits: { user: string; share: number }[];
+    }
+  ): Promise<IExpense[]> => {
+    const { data } = await api.post<IExpense[]>(
+      `/itineraries/${itineraryId}/expenses`,
+      expense
+    );
+    return data;
+  };
+  
+  // Update an expense
+  export const updateExpense = async (
+    itineraryId: string,
+    expenseId: string,
+    updates: Partial<{ description: string; amount: number; splits: { user: string; share: number }[] }>
+  ): Promise<IExpense> => {
+    const { data } = await api.patch<IExpense>(
+      `/itineraries/${itineraryId}/expenses/${expenseId}`,
+      updates
+    );
+    return data;
+  };
+  
+  // Delete an expense
+  export const deleteExpense = async (
+    itineraryId: string,
+    expenseId: string
+  ): Promise<void> => {
+    await api.delete(`/itineraries/${itineraryId}/expenses/${expenseId}`);
+  };
